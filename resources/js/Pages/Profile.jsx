@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react"
-import { Mail, Bell, ChevronLeft, ChevronRight, LayoutDashboard, BarChart3, Eye, User, FileText, Activity, Clock, X, Edit, LogOut, Phone, AtSign, Shield, Camera } from "lucide-react"
+import { Bell, ChevronLeft, ChevronRight, LayoutDashboard, BarChart3, Eye, User, FileText, Activity, Clock, X, Edit, LogOut, Phone, AtSign, Shield, Camera } from "lucide-react"
 
 const navItems = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
@@ -168,10 +168,6 @@ export default function Profile({ user: propUser = null }) {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <button className="p-2.5 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 rounded-xl transition-all hover:scale-110 relative group">
-              <Mail className="w-5 h-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
-              <span className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full"></span>
-            </button>
             <div className="relative" ref={notifRef}>
               <button
                 onClick={() => setShowNotif(!showNotif)}

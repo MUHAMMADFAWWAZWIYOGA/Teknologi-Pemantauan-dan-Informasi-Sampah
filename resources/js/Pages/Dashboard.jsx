@@ -1,4 +1,4 @@
-import { ChevronRight, ChevronLeft, Mail, Bell, LayoutDashboard, BarChart3, Eye, FileText, User, X, TrendingUp, Activity, Zap, Clock } from "lucide-react"
+import { ChevronRight, ChevronLeft, Bell, LayoutDashboard, BarChart3, Eye, FileText, User, X, TrendingUp, Activity, Zap, Clock } from "lucide-react"
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from "recharts"
 import React, { useState, useMemo, useRef, useEffect } from "react"
 
@@ -173,10 +173,6 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <button className="p-2.5 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 rounded-xl transition-all hover:scale-110 relative group">
-                <Mail className="w-5 h-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
-                <span className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full"></span>
-              </button>
               <div className="relative" ref={notifRef}>
                 <button
                   onClick={() => setShowNotif(!showNotif)}
