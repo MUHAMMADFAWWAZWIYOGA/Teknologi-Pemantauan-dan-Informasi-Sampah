@@ -1,34 +1,9 @@
 "use client"
-
-
 import { Link, Head } from "@inertiajs/react";
 import { ChevronRight, ChevronLeft, Mail, Bell, LayoutDashboard, BarChart3, Eye, FileText, User, X } from "lucide-react"
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 import React, { useState, useMemo, useRef, useEffect } from "react"
 
-import { useState } from "react";
-import { Link } from "@inertiajs/react";
-import {
-    ChevronRight,
-    ChevronLeft,
-    Mail,
-    Bell,
-    LayoutDashboard,
-    BarChart3,
-    Eye,
-    User,
-} from "lucide-react";
-import {
-    LineChart,
-    Line,
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    ResponsiveContainer,
-} from "recharts";
 
 const lineChartData = [
     { name: "hari 1", ccx1: 20, ccx2: 30, ccx3: 25 },
