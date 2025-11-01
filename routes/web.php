@@ -15,7 +15,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::get('/laporan', function () {
-        return Inertia::render('Laporan');
+        return Inertia::render('laporan');
     })->name('laporan');
 
     Route::get('/pemantauan', function () {
