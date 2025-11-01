@@ -7,7 +7,16 @@ export default function Laporan({ reports = null }) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const sampleData = [
-    
+    { id: 1, tanggal: '2025-10-20', deviceId: 'D1', lokasi: 'Pasar Raya', jumlahDeteksi: 12, akurasi: '94.5%' },
+    { id: 2, tanggal: '2025-10-20', deviceId: 'D2', lokasi: 'Pasar Raya', jumlahDeteksi: 13, akurasi: '88.3%' },
+    { id: 3, tanggal: '2025-10-20', deviceId: 'D3', lokasi: 'Pasar Raya', jumlahDeteksi: 5, akurasi: '76.9%' },
+    { id: 4, tanggal: '2025-10-20', deviceId: 'D4', lokasi: 'Pasar Raya', jumlahDeteksi: 7, akurasi: '91.7%' },
+    { id: 5, tanggal: '2025-10-20', deviceId: 'D5', lokasi: 'Pasar Raya', jumlahDeteksi: 8, akurasi: '84.2%' },
+    { id: 6, tanggal: '2025-10-20', deviceId: 'D6', lokasi: 'Pasar Raya', jumlahDeteksi: 12, akurasi: '94.5%' },
+    { id: 7, tanggal: '2025-10-20', deviceId: 'D7', lokasi: 'Pasar Raya', jumlahDeteksi: 13, akurasi: '88.3%' },
+    { id: 8, tanggal: '2025-10-20', deviceId: 'D8', lokasi: 'Pasar Raya', jumlahDeteksi: 5, akurasi: '76.9%' },
+    { id: 9, tanggal: '2025-10-20', deviceId: 'D9', lokasi: 'Pasar Raya', jumlahDeteksi: 7, akurasi: '91.7%' },
+    { id: 10, tanggal: '2025-10-20', deviceId: 'D10', lokasi: 'Pasar Raya', jumlahDeteksi: 8, akurasi: '84.2%' },
   ];
 
   const reportData = useMemo(() => {
@@ -114,7 +123,7 @@ export default function Laporan({ reports = null }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {reportData.map((row, index) => (
+                  {sampleData.map((row, index) => (
                     <tr key={row.id ?? index} className={`border-b border-gray-200 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-100`}>
                       <td className="px-6 py-4 text-sm text-gray-900">{row.tanggal}</td>
                       <td className="px-6 py-4 text-sm text-gray-900">{row.deviceId}</td>
