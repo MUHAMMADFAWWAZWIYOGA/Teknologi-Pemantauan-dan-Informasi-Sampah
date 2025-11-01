@@ -1,6 +1,6 @@
 import { ChevronRight, ChevronLeft, Bell, LayoutDashboard, BarChart3, Eye, FileText, User, X, Upload, Trash2, Activity, Clock, Edit, Image as ImageIcon } from "lucide-react"
 import React, { useState, useRef, useEffect } from "react"
-import { Head, router, useForm } from "@inertiajs/react"
+import { Head, Link, router, useForm } from "@inertiajs/react"
 
 const notifications = [
   { id: 1, message: "Kamera 2 mendeteksi gerakan mencurigakan", time: "5 menit lalu", type: "warning" },
@@ -203,9 +203,11 @@ export default function Konten({ contents = [] }) {
 
           <nav className="flex-1 px-4 py-6 space-y-2">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.id}
                 href={item.href}
+                preserveState
+                preserveScroll
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${
                   activeMenu === item.id 
                     ? "text-blue-600 bg-gradient-to-r from-blue-50 to-purple-50 shadow-md scale-105" 
@@ -215,7 +217,7 @@ export default function Konten({ contents = [] }) {
               >
                 <item.icon className={`w-5 h-5 transition-transform group-hover:scale-110 ${activeMenu === item.id ? "animate-pulse" : ""}`} />
                 {sidebarOpen && <span className="text-base font-semibold">{item.label}</span>}
-              </a>
+              </Link>
             ))}
           </nav>
 

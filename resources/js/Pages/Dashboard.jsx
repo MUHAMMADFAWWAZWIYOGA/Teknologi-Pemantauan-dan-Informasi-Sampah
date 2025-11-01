@@ -1,6 +1,7 @@
 import { ChevronRight, ChevronLeft, Bell, LayoutDashboard, BarChart3, Eye, FileText, User, X, TrendingUp, Activity, Zap, Clock } from "lucide-react"
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from "recharts"
 import React, { useState, useMemo, useRef, useEffect } from "react"
+import { Head, Link } from "@inertiajs/react"
 
 const lineChartData = [
     { name: "hari 1", ccx1: 20, ccx2: 30, ccx3: 25 },
@@ -98,6 +99,8 @@ export default function Dashboard() {
   };
 
   return (
+    <>
+      <Head title="Dashboard" />
       <div className="flex h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
         <div
           className={`${sidebarOpen ? "w-64" : "w-20"} bg-white/80 backdrop-blur-lg border-r border-slate-200/50 flex flex-col shadow-xl transition-all duration-300`}
@@ -125,9 +128,11 @@ export default function Dashboard() {
 
           <nav className="flex-1 px-4 py-6 space-y-2">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.id}
                 href={item.href}
+                preserveState
+                preserveScroll
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${
                   activeMenu === item.id 
                     ? "text-blue-600 bg-gradient-to-r from-blue-50 to-purple-50 shadow-md scale-105" 
@@ -137,7 +142,7 @@ export default function Dashboard() {
               >
                 <item.icon className={`w-5 h-5 transition-transform group-hover:scale-110 ${activeMenu === item.id ? "animate-pulse" : ""}`} />
                 {sidebarOpen && <span className="text-base font-semibold">{item.label}</span>}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -531,5 +536,6 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+    </>
   )
 }
