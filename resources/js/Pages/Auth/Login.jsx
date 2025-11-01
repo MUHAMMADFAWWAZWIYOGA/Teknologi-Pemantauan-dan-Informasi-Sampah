@@ -1,4 +1,8 @@
 import { useEffect, useState } from "react";
+// Impor 'router' dari Inertia.js untuk navigasi dan form handling
+import { router } from '@inertiajs/react'; 
+// Catatan: Dalam implementasi Inertia yang ideal, Anda akan menggunakan useForm hook
+// daripada useState/setErrors manual untuk form submission, tapi kita modifikasi yang ada.
 
 export default function Login() {
     const [data, setData] = useState({
@@ -7,7 +11,7 @@ export default function Login() {
         remember: false,
     });
     const [processing, setProcessing] = useState(false);
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({}); // State ini akan diperbarui jika Laravel mengirimkan error validasi
     const [showPassword, setShowPassword] = useState(false);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -23,21 +27,40 @@ export default function Login() {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
+    // Fungsi submit yang dimodifikasi untuk Inertia:
+    // Menghapus setTimeout dan menggunakan router.post()
     const submit = (e) => {
         e.preventDefault();
-        setProcessing(true);
         
-        setTimeout(() => {
-            if (!data.email) {
-                setErrors({ email: "Email is required" });
-            } else if (!data.password) {
-                setErrors({ password: "Password is required" });
-            } else {
-                setErrors({});
-                alert("Login successful! (Demo)");
-            }
-            setProcessing(false);
-        }, 1500);
+        // Validasi Klien Awal (untuk mencegah pengiriman jika field kosong)
+        setErrors({}); // Reset errors sebelum mencoba submit
+        if (!data.email || !data.password) {
+            setErrors({ 
+                email: !data.email ? "Email is required" : "",
+                password: !data.password ? "Password is required" : "",
+            });
+            return;
+        }
+
+        // Kirim data ke endpoint login Laravel yang didefinisikan di routes/web.php
+        // Inertia akan menangani: 
+        // 1. Set processing = true (via onStart)
+        // 2. Redirect ke dashboard jika sukses (Laravel mengembalikan redirect response)
+        // 3. Set error state jika gagal (Laravel mengembalikan error response)
+        router.post(route('login'), data, {
+            onStart: () => {
+                setProcessing(true);
+                setErrors({}); // Bersihkan error lama
+            },
+            onFinish: () => {
+                setProcessing(false);
+            },
+            onError: (be_errors) => {
+                // Inertia secara otomatis akan menyuntikkan errors ke props
+                // Tapi kita tetap set state lokal untuk kesesuaian UI Anda.
+                setErrors(be_errors); 
+            },
+        });
     };
 
     return (
@@ -211,7 +234,7 @@ export default function Login() {
                     }}
                 >
                     <h2 className="text-6xl font-bold text-white mb-6 drop-shadow-lg">
-                        Hello, Tapis Admin!
+                        Hello, Tapis's Admin!
                     </h2>
                     <p className="text-2xl text-blue-50 drop-shadow-md">
                         Pantau Keadaan Secara Real-Time
@@ -219,6 +242,7 @@ export default function Login() {
                 </div>
             </div>
 
+            {/* Bagian Form Login */}
             <div className="w-full lg:w-1/2 bg-white flex items-center justify-center p-6 relative overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">
                     <div
@@ -384,7 +408,7 @@ export default function Login() {
 
                         <div className="text-right animate-fade-in" style={{ animationDelay: '0.4s' }}>
                             <a
-                                href="#"
+                                href={route('password.request')} // Menggunakan helper route() Laravel
                                 className="text-blue-400 hover:text-blue-500 text-sm font-medium transition-all duration-300 hover:underline"
                             >
                                 Forgot Password?
@@ -468,9 +492,6 @@ export default function Login() {
                         transform: translateX(-50%) skewY(0deg);
                     }
                 }
-
-                /* Floating Particles - removed animation */
-                /* Particle Float - removed */
 
                 /* Orbiting Circles */
                 .orbit-container {
