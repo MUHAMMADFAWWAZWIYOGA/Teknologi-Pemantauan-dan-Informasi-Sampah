@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Link } from "@inertiajs/react"
+import { Link, router } from "@inertiajs/react"
 import { Mail, Bell, ChevronLeft, ChevronRight, LayoutDashboard, BarChart3, Eye, User } from "lucide-react"
 
 const navItems = [
@@ -30,6 +30,7 @@ export default function Profile({ user: propUser = null }) {
   const [notifCount] = useState(2)
   const [activeMenu, setActiveMenu] = useState("profile")
   const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -171,12 +172,20 @@ export default function Profile({ user: propUser = null }) {
                 </div>
               </div>
 
-              <div className="flex justify-center">
+              <div className="flex justify-center gap-4">
                 <button
                   onClick={handleEditClick}
                   className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition transform hover:scale-105 shadow-lg"
                 >
                   EDIT PROFILE
+                </button>
+
+                {/* Explicit logout button opens confirmation modal */}
+                <button
+                  onClick={() => setShowLogoutConfirm(true)}
+                  className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full transition transform hover:scale-105 shadow-lg"
+                >
+                  LOG OUT
                 </button>
               </div>
 
@@ -234,6 +243,51 @@ export default function Profile({ user: propUser = null }) {
                         </button>
                       </div>
                     </form>
+                  </div>
+                </div>
+              )}
+
+              {/* Logout confirmation modal */}
+              {showLogoutConfirm && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black opacity-50" onClick={() => setShowLogoutConfirm(false)}></div>
+                  <div className="bg-white rounded-xl p-6 max-w-sm w-full shadow-2xl z-10">
+                    <h3 className="text-lg font-semibold text-slate-900">Konfirmasi Logout</h3>
+                    <p className="text-sm text-slate-600 mt-2">Apakah Anda yakin ingin keluar dari akun?</p>
+                    <div className="mt-4 flex gap-3 justify-end">
+                      <button
+                        type="button"
+                        onClick={() => setShowLogoutConfirm(false)}
+                        className="px-4 py-2 border border-slate-300 rounded-lg text-slate-700 hover:bg-slate-50"
+                      >
+                        Batal
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          // robust logout: use Inertia router to POST, follow server redirect on success
+                          try {
+                            router.post(route('logout'), {
+                              onSuccess: () => {
+                                // ensure visit to login route after logout
+                                router.visit(route('login'))
+                              },
+                              onError: (errors) => {
+                                console.error('Logout error', errors)
+                                // fallback to hard redirect to login page
+                                window.location.href = route('login')
+                              },
+                            })
+                          } catch (e) {
+                            console.error(e)
+                            window.location.href = route('login')
+                          }
+                        }}
+                        className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                      >
+                        Keluar
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
