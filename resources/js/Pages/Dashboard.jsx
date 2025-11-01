@@ -92,7 +92,7 @@ export default function Dashboard() {
               onClick={() => setActiveMenu(item.id)}
             >
               <item.icon className="w-5 h-5" />
-              {sidebarOpen && <span className="text-sm font-medium">{item.label}</span>}
+              {sidebarOpen && <span className="text-xl font-semibold">{item.label}</span>}
             </Link>
           ))}
         </nav>
@@ -146,7 +146,7 @@ export default function Dashboard() {
         </div>
 
         <div className="flex-1 overflow-auto p-8 space-y-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ">
             {[
               { label: "Active Devices", value: "10", icon: "📱", color: "from-blue-500 to-blue-600" },
               { label: "Events (24h)", value: "30", icon: "📊", color: "from-emerald-500 to-emerald-600" },
@@ -159,7 +159,7 @@ export default function Dashboard() {
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-slate-600 text-sm font-medium">{stat.label}</p>
+                    <p className="text-white text-sm font-medium">{stat.label}</p>
                     <p className="text-4xl font-bold text-white mt-2">{stat.value}</p>
                   </div>
                   <div className="text-4xl opacity-20">{stat.icon}</div>

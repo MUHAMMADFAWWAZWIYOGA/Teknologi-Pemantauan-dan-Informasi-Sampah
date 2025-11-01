@@ -127,7 +127,7 @@ export default function Laporan({ reports = null }) {
               onClick={() => setActiveMenu(item.id)}
             >
               <item.icon className="w-5 h-5" />
-              {sidebarOpen && <span className="text-sm font-medium">{item.label}</span>}
+              {sidebarOpen && <span className="text-xl font-semibold">{item.label}</span>}
             </Link>
           ))}
         </nav>

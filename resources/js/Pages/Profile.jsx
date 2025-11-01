@@ -65,7 +65,6 @@ export default function Profile({ user: propUser = null }) {
               alt="Logo Hijau.ID"
               className="w-20 h-20 object-contain"
             />
-
             {sidebarOpen && (
               <span className="font-bold text-2xl bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
                 Tapis.id
@@ -88,9 +87,11 @@ export default function Profile({ user: propUser = null }) {
                 }`}
               onClick={() => setActiveMenu(item.id)}
             >
+
               <item.icon className="w-5 h-5" />
-              {sidebarOpen && <span className="text-sm font-medium">{item.label}</span>}
+              {sidebarOpen && <span className="text-xl font-semibold">{item.label}</span>}
             </Link>
+
           ))}
         </nav>
 
@@ -132,8 +133,8 @@ export default function Profile({ user: propUser = null }) {
             </button>
             <div className="flex items-center gap-3 pl-4 border-l border-slate-200">
               <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
-                <span className="text-white font-semibold text-sm">{user.fullName.charAt(0)}</span>
-              </div>
+                  <span className="text-white font-semibold text-sm">A</span>
+                </div>
               <div>
                 <p className="text-sm font-semibold text-slate-900">Admin</p>
                 <p className="text-xs text-slate-500">Admin account</p>

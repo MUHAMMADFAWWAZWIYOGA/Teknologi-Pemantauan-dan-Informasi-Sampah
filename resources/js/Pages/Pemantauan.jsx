@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {ChevronRight,ChevronLeft,Mail,Bell,LayoutDashboard,BarChart3,Eye,User,} from "lucide-react";
+import { ChevronRight, ChevronLeft, Mail, Bell, LayoutDashboard, BarChart3, Eye, User, } from "lucide-react";
 import { Link } from "@inertiajs/react";
 
 const cameras = [
@@ -18,7 +18,7 @@ const navItems = [
 
 export default function Pemantauan() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [activeMenu, setActiveMenu] = useState(3); 
+  const [activeMenu, setActiveMenu] = useState(3);
   const [notifCount] = useState(3);
 
   return (
@@ -40,7 +40,7 @@ export default function Pemantauan() {
               </span>
             )}
           </div>
-      
+
           {sidebarOpen && (
             <button
               onClick={() => setSidebarOpen(false)}
@@ -56,17 +56,15 @@ export default function Pemantauan() {
             <Link
               key={item.id}
               href={item.href}
-              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
-                activeMenu === item.id
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${activeMenu === item.id
                   ? "text-blue-600 bg-blue-50 shadow-sm"
                   : "text-slate-600 hover:bg-slate-50"
-              }`}
+                }`}
               onClick={() => setActiveMenu(item.id)}
             >
+             
               <item.icon className="w-5 h-5" />
-              {sidebarOpen && (
-                <span className="text-sm font-medium">{item.label}</span>
-              )}
+              {sidebarOpen && <span className="text-xl font-semibold">{item.label}</span>}
             </Link>
           ))}
         </nav>
@@ -104,23 +102,23 @@ export default function Pemantauan() {
           </div>
 
           <div className="flex items-center gap-4">
-             <div className="flex items-center gap-4">
-                        <button className="p-2.5 hover:bg-slate-100 rounded-lg transition-colors">
-                          <Mail className="w-5 h-5 text-slate-600" />
-                        </button>
-                        <button className="p-2.5 hover:bg-slate-100 rounded-lg transition-colors relative">
-                          <Bell className="w-5 h-5 text-slate-600" />
-                          <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full shadow-lg"></span>
-                        </button>
-                        <div className="flex items-center gap-3 pl-4 border-l border-slate-200">
-                          <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
-                            <span className="text-white font-semibold text-sm">A</span>
-                          </div>
-                          <div>
-                            <p className="text-sm font-semibold text-slate-900">Admin</p>
-                            <p className="text-xs text-slate-500">Admin account</p>
-                          </div>
-                        </div>
+            <div className="flex items-center gap-4">
+              <button className="p-2.5 hover:bg-slate-100 rounded-lg transition-colors">
+                <Mail className="w-5 h-5 text-slate-600" />
+              </button>
+              <button className="p-2.5 hover:bg-slate-100 rounded-lg transition-colors relative">
+                <Bell className="w-5 h-5 text-slate-600" />
+                <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full shadow-lg"></span>
+              </button>
+              <div className="flex items-center gap-3 pl-4 border-l border-slate-200">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-white font-semibold text-sm">A</span>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">Admin</p>
+                  <p className="text-xs text-slate-500">Admin account</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
