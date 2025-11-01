@@ -1,6 +1,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { Head, Link } from '@inertiajs/react';
+import { ChevronRight, ChevronLeft, Mail, Bell } from "lucide-react";
 
 export default function Laporan({ reports = null }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -70,7 +71,7 @@ export default function Laporan({ reports = null }) {
           </div>
 
           <nav className="flex-1 px-4 py-6 space-y-2">
-            <Link href="/dashboard" className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition">DASHBOARD</Link>
+            <Link href="/Dashboard" className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition">DASHBOARD</Link>
             <Link href="/laporan" className="flex items-center gap-3 px-4 py-3 text-blue-600 bg-blue-50 rounded-lg transition">LAPORAN</Link>
             <Link href="/pemantauan" className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition">PEMANTAUAN</Link>
             <Link href="/profile" className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-100 rounded-lg transition">PROFILE</Link>
@@ -81,8 +82,20 @@ export default function Laporan({ reports = null }) {
           <div className="bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-between">
             <h1 className="text-3xl font-bold text-gray-900">Laporan</h1>
             <div className="flex items-center gap-6">
-              <button className="text-gray-600 hover:text-gray-900">🔔</button>
-              <button className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-white font-semibold">U</button>
+              <button className="p-2 hover:bg-gray-100 rounded-lg">
+              <Mail className="w-6 h-6 text-gray-600" />
+            </button>
+            <button className="p-2 hover:bg-gray-100 rounded-lg relative">
+              <Bell className="w-6 h-6 text-gray-600" />
+              <span className="absolute top-1 right-1 w-3 h-3 bg-red-500 rounded-full"></span>
+            </button>
+              <div className="flex items-center gap-2 pl-4 border-l border-gray-200">
+              <div className="w-10 h-10 bg-yellow-400 rounded-full"></div>
+              <div>
+                <p className="text-sm font-medium text-gray-900">Admin</p>
+                <p className="text-xs text-gray-500">Admin account</p>
+              </div>
+            </div>
             </div>
           </div>
 
@@ -125,7 +138,7 @@ export default function Laporan({ reports = null }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {sampleData.map((row, index) => (
+                  {reportData.map((row, index) => (
                     <tr key={row.id ?? index} className={`border-b border-gray-200 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-100`}>
                       <td className="px-6 py-4 text-sm text-gray-900">{row.tanggal}</td>
                       <td className="px-6 py-4 text-sm text-gray-900">{row.deviceId}</td>
@@ -142,7 +155,7 @@ export default function Laporan({ reports = null }) {
               <div className="flex gap-3">
                 <button onClick={handleExportCSV} className="px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold rounded-lg">Export to CSV</button>
                 <button onClick={handleExportPDF} className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg">Export to PDF</button>
-                <button onClick={handleExportExcel} className="px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold rounded-lg">Export to Excel (XLSX)</button>
+                <button onClick={handleExportExcel} className="px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold rounded-lg">Export to Excel (XLSX)</button>            
               </div>
 
               <div className="flex items-center gap-2">
