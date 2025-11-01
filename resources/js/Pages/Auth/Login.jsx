@@ -14,18 +14,76 @@ export default function Login() {
     const [errors, setErrors] = useState({}); // State ini akan diperbarui jika Laravel mengirimkan error validasi
     const [showPassword, setShowPassword] = useState(false);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [showForm, setShowForm] = useState(false);
+    const [mouseDetected, setMouseDetected] = useState(false);
+    const [formInteracted, setFormInteracted] = useState(false);
 
     useEffect(() => {
+        // Untuk mobile/touch device, langsung tampilkan form
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        
+        if (isMobile || hasTouchScreen) {
+            setTimeout(() => {
+                setShowForm(true);
+            }, 500);
+            return;
+        }
+
         const handleMouseMove = (e) => {
             setMousePosition({
                 x: e.clientX,
                 y: e.clientY,
             });
+            
+            // Deteksi pergerakan mouse pertama kali
+            if (!mouseDetected && !showForm) {
+                setMouseDetected(true);
+                // Delay sedikit untuk animasi lebih smooth
+                setTimeout(() => {
+                    setShowForm(true);
+                }, 150);
+            }
+        };
+
+        const handleMouseLeave = () => {
+            // Jika form belum diinteraksi, kembali ke fullscreen
+            if (!formInteracted && showForm) {
+                setShowForm(false);
+                setMouseDetected(false);
+            }
         };
 
         window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
+        document.addEventListener('mouseleave', handleMouseLeave);
+        
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseleave', handleMouseLeave);
+        };
+    }, [mouseDetected, showForm, formInteracted]);
+
+    // Deteksi interaksi dengan form
+    useEffect(() => {
+        if (showForm) {
+            const handleFormInteraction = () => {
+                setFormInteracted(true);
+            };
+
+            const formElement = document.querySelector('[data-form-container]');
+            if (formElement) {
+                formElement.addEventListener('focus', handleFormInteraction, true);
+                formElement.addEventListener('input', handleFormInteraction, true);
+                formElement.addEventListener('click', handleFormInteraction, true);
+                
+                return () => {
+                    formElement.removeEventListener('focus', handleFormInteraction, true);
+                    formElement.removeEventListener('input', handleFormInteraction, true);
+                    formElement.removeEventListener('click', handleFormInteraction, true);
+                };
+            }
+        }
+    }, [showForm]);
 
     // Fungsi submit yang dimodifikasi untuk Inertia:
     // Menghapus setTimeout dan menggunakan router.post()
@@ -64,8 +122,8 @@ export default function Login() {
     };
 
     return (
-        <div className="min-h-screen flex bg-white">
-            <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden items-center justify-center">
+        <div className="min-h-screen flex bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 overflow-hidden relative">
+            <div className={`${showForm ? 'lg:w-1/2' : 'lg:w-full'} hidden lg:flex relative overflow-hidden items-center justify-center transition-all duration-[900ms] ease-out will-change-[width] z-10`} style={{ transition: 'width 900ms cubic-bezier(0.4, 0, 0.2, 1)' }}>
                 <div className="absolute inset-0 bg-gradient-animation"></div>
                 
                 <div className="absolute inset-0 opacity-30">
@@ -236,15 +294,37 @@ export default function Login() {
                     <h2 className="text-6xl font-bold text-white mb-6 drop-shadow-lg">
                         Hello, Tapis's Admin!
                     </h2>
-                    <p className="text-2xl text-blue-50 drop-shadow-md">
+                    <p className="text-2xl text-blue-50 drop-shadow-md mb-8">
                         Pantau Keadaan Secara Real-Time
                     </p>
+                    {!showForm && (
+                        <div className="mt-8 animate-pulse">
+                            <p className="text-xl text-white/90 drop-shadow-md flex items-center justify-center gap-3">
+                                <svg className="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                                </svg>
+                                Gerakkan mouse untuk login
+                            </p>
+                        </div>
+                    )}
                 </div>
             </div>
 
             {/* Bagian Form Login */}
-            <div className="w-full lg:w-1/2 bg-white flex items-center justify-center p-6 relative overflow-hidden">
-                <div className="absolute inset-0 pointer-events-none">
+            <div 
+                data-form-container
+                className={`w-full ${showForm ? 'lg:w-1/2 lg:opacity-100 lg:visible lg:pointer-events-auto lg:shadow-2xl' : 'lg:w-0 lg:opacity-0 lg:invisible lg:pointer-events-none'} bg-gradient-to-br from-white/98 via-blue-50/60 to-purple-50/50 backdrop-blur-lg flex items-center justify-center p-6 relative overflow-hidden z-20`}
+                style={!showForm ? { 
+                    transform: 'translateZ(0) translateX(100%)',
+                    opacity: 0
+                } : { 
+                    transform: 'translateZ(0) translateX(0)',
+                    opacity: 1
+                }}
+            >
+                {/* Gradient overlay untuk transisi lebih smooth */}
+                <div className={`absolute inset-0 bg-gradient-to-r from-blue-200/30 via-purple-200/20 to-transparent transition-opacity duration-700 ease-out pointer-events-none z-0 ${showForm ? 'opacity-100' : 'opacity-0'}`}></div>
+                <div className={`absolute inset-0 pointer-events-none ${showForm ? 'opacity-100' : 'lg:opacity-0 opacity-100'} transition-opacity duration-500`}>
                     <div
                         className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 rounded-full opacity-20 blur-3xl"
                         style={{
@@ -306,7 +386,7 @@ export default function Login() {
                     ))}
                 </div>
 
-                <div className="w-full max-w-md z-10 animate-slide-up">
+                <div className={`w-full max-w-md z-30 relative ${showForm ? 'opacity-100 lg:translate-x-0' : 'lg:opacity-0 lg:translate-x-12 opacity-100'} transition-all duration-[800ms] ease-out animate-slide-up`}>
                     <div className="text-center mb-8">
                         <h1 className="text-5xl font-bold text-gray-900 mb-2 animate-fade-in">
                             Welcome Back!
@@ -378,14 +458,16 @@ export default function Login() {
                                     autoComplete="current-password"
                                     onChange={(e) => setData({...data, password: e.target.value})}
                                     placeholder="Enter your password"
-                                    className={`w-full px-4 py-2.5 bg-gray-50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all duration-300 text-sm transform hover:scale-[1.01] ${
+                                    className={`w-full px-4 py-2.5 pr-12 bg-gray-50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all duration-300 text-sm transform hover:scale-[1.01] ${
                                         errors.password ? "border-red-500 shake" : "border-gray-200"
                                     }`}
+                                    style={{ lineHeight: '1.5' }}
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-all duration-300 hover:scale-110"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-all duration-300 hover:scale-110 flex items-center justify-center"
+                                    style={{ top: '50%', transform: 'translateY(-50%)' }}
                                 >
                                     {showPassword ? (
                                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -439,6 +521,12 @@ export default function Login() {
             </div>
 
             <style>{`
+                /* Smooth transitions and GPU acceleration */
+                * {
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
+
                 /* Animated Gradient Background */
                 @keyframes gradient-shift {
                     0%, 100% {
@@ -454,6 +542,8 @@ export default function Login() {
 
                 .bg-gradient-animation {
                     animation: gradient-shift 15s ease infinite;
+                    transform: translateZ(0);
+                    will-change: background;
                 }
 
                 /* Waves Animation */
@@ -678,6 +768,45 @@ export default function Login() {
 
                 .shake {
                     animation: shake 0.3s ease-in-out;
+                }
+
+                /* Smooth slide transition dari kanan */
+                [data-form-container] {
+                    transition: width 900ms cubic-bezier(0.4, 0, 0.2, 1),
+                                transform 900ms cubic-bezier(0.4, 0, 0.2, 1),
+                                opacity 700ms ease-out,
+                                background 900ms cubic-bezier(0.4, 0, 0.2, 1);
+                    background-blend-mode: overlay;
+                }
+
+                /* Prevent white flash dengan background gradient */
+                [data-form-container]::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(to right, 
+                        rgba(59, 130, 246, 0.1), 
+                        rgba(147, 51, 234, 0.08), 
+                        rgba(236, 72, 153, 0.05));
+                    opacity: 1;
+                    pointer-events: none;
+                    z-index: -1;
+                    transition: opacity 700ms ease-out;
+                }
+
+                [data-form-container].lg\\:w-0::before {
+                    opacity: 0;
+                }
+
+                /* GPU acceleration for better performance */
+                @supports (transform: translateZ(0)) {
+                    [class*="transition-all"],
+                    [data-form-container] {
+                        transform: translateZ(0);
+                        backface-visibility: hidden;
+                        perspective: 1000px;
+                        will-change: width, transform, opacity, clip-path;
+                    }
                 }
             `}</style>
         </div>
