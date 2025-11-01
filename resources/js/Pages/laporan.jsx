@@ -1,4 +1,3 @@
-// resources/js/Pages/Laporan.jsx
 import React, { useState, useMemo } from 'react';
 import { Head, Link } from '@inertiajs/react';
 
@@ -47,7 +46,6 @@ export default function Laporan({ reports = null }) {
       <Head title="Laporan" />
 
       <div className="flex h-screen bg-gray-50">
-        {/* Sidebar */}
         <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
           <div className="p-6 border-b border-gray-200">
             <div className="flex items-center gap-2">
@@ -68,7 +66,6 @@ export default function Laporan({ reports = null }) {
           </nav>
         </div>
 
-        {/* Main Content */}
         <div className="flex-1 flex flex-col">
           <div className="bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-between">
             <h1 className="text-3xl font-bold text-gray-900">Laporan</h1>
