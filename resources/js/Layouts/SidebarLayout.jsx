@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, usePage } from '@inertiajs/react'
-import { ChevronRight, ChevronLeft, Mail, Bell, LayoutDashboard, BarChart3, Eye, FileText, User } from 'lucide-react'
+import { ChevronRight, ChevronLeft, Bell, LayoutDashboard, BarChart3, Eye, FileText, User } from 'lucide-react'
 
 export default function SidebarLayout({ title, rightActions = null, children, active = 'konten' }) {
     const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -88,9 +88,6 @@ export default function SidebarLayout({ title, rightActions = null, children, ac
                     <div className="flex items-center gap-4">
                         {rightActions}
 
-                        <button className="p-2.5 hover:bg-slate-100 rounded-lg transition-colors">
-                            <Mail className="w-5 h-5 text-slate-600" />
-                        </button>
                         <button className="p-2.5 hover:bg-slate-100 rounded-lg transition-colors relative">
                             <Bell className="w-5 h-5 text-slate-600" />
                             <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full shadow-lg"></span>

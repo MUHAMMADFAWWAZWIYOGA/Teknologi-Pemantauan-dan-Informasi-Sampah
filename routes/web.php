@@ -18,7 +18,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::controller(\App\Http\Controllers\EducationalContentController::class)->group(function () {
         Route::get('/konten', 'index')->name('konten');
         Route::post('/konten', 'store')->name('konten.store');
+        Route::put('/konten/{content}', 'update')->name('konten.update');
         Route::delete('/konten/{content}', 'destroy')->name('konten.destroy');
+        Route::patch('/konten/{content}/toggle-active', 'toggleActive')->name('konten.toggle-active');
     });
 
     Route::get('/laporan', function () {
