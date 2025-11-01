@@ -68,10 +68,8 @@ export default function Dashboard() {
     className="w-20 h-20 object-contain"
   />
 
-
-
             {sidebarOpen && (
-              <span className="font-bold text-lg bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+              <span className="font-bold text-2xl bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
                 Tapis.id
               </span>
             )}

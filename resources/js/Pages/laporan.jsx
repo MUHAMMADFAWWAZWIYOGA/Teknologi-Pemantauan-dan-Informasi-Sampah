@@ -96,17 +96,17 @@ export default function Laporan({ reports = null }) {
       <div
         className={`${sidebarOpen ? "w-64" : "w-20"} bg-white border-r border-slate-200 flex flex-col shadow-lg transition-all duration-300`}
       >
-        {/* Logo Section */}
         <div className="p-6 border-b border-slate-100 flex items-center justify-between">
           <div className={`flex items-center gap-3 ${!sidebarOpen && "justify-center w-full"}`}>
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
-              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M3 3h18v2H3V3zm0 4h18v2H3V7zm0 4h18v2H3v-2zm0 4h18v2H3v-2z" />
-              </svg>
-            </div>
+            <img
+              src="/assets/logo_tapis.png"
+              alt="Logo Hijau.ID"
+              className="w-20 h-20 object-contain"
+            />
+
             {sidebarOpen && (
-              <span className="font-bold text-lg bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
-                Hijau.ID
+              <span className="font-bold text-2xl bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+                Tapis.id
               </span>
             )}
           </div>
@@ -122,9 +122,8 @@ export default function Laporan({ reports = null }) {
             <Link
               key={item.id}
               href={item.href}
-              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
-                activeMenu === item.id ? "text-blue-600 bg-blue-50 shadow-sm" : "text-slate-600 hover:bg-slate-50"
-              }`}
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${activeMenu === item.id ? "text-blue-600 bg-blue-50 shadow-sm" : "text-slate-600 hover:bg-slate-50"
+                }`}
               onClick={() => setActiveMenu(item.id)}
             >
               <item.icon className="w-5 h-5" />
