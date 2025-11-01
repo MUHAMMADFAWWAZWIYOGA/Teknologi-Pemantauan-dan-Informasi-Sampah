@@ -1,3 +1,5 @@
+####TAPIS
+
 <p TAPIS ( Teknologi Pemantauan dan Informasi Sampah ) ></a></p>
 
 <p align="center">
@@ -11,9 +13,11 @@
 
 Tapis adalah sistem untuk pemantauan pelanggaran pembuangan sampah di tempat jarang terlihat
 
-## Desain Website
+## Kegunaan Sistem 
+> sistem dapat berfungsi untuk menjadi sistem di gunakan  oleh pemerintah/instansi/pihak swasta dalam mengetasi permasalahan sampah di lingkungan 
 
 ## Model Deteksi 
+
 
 ## Celah Keamanan
 
