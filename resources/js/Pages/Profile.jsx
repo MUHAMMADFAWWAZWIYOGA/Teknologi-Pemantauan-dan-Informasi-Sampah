@@ -86,7 +86,7 @@ export default function Profile({ user: propUser = null }) {
             <h1 className="text-3xl font-bold text-gray-900">PROFILE</h1>
 
             <div className="flex items-center gap-4">
-              <button className="p-2 hover:bg-gray-100 rounded-lg">
+              <button className="p-4 hover:bg-gray-100 rounded-lg">
                 <Mail className="w-6 h-6 text-gray-600" />
               </button>
               <button className="p-2 hover:bg-gray-100 rounded-lg relative">

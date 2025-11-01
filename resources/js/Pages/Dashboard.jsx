@@ -111,7 +111,7 @@ export default function Dashboard() {
         <div className="bg-white border-b border-gray-200 px-8 py-4 flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
           <div className="flex items-center gap-4">
-            <button className="p-2 hover:bg-gray-100 rounded-lg">
+            <button className="p-4 hover:bg-gray-100 rounded-lg">
               <Mail className="w-6 h-6 text-gray-600" />
             </button>
             <button className="p-2 hover:bg-gray-100 rounded-lg relative">
@@ -119,7 +119,7 @@ export default function Dashboard() {
               <span className="absolute top-1 right-1 w-3 h-3 bg-red-500 rounded-full"></span>
             </button>
             <div className="flex items-center gap-2 pl-4 border-l border-gray-200">
-              <div className="w-10 h-10 bg-yellow-400 rounded-full"></div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-icon lucide-circle-user"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
               <div>
                 <p className="text-sm font-medium text-gray-900">Admin</p>
                 <p className="text-xs text-gray-500">Admin account</p>

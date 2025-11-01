@@ -45,7 +45,7 @@ export default function Pemantauan() {
           <div className="flex items-center gap-4">
             <button
               aria-label="messages"
-              className="p-2 hover:bg-gray-100 rounded-lg"
+              className="p-4 hover:bg-gray-100 rounded-lg"
               type="button"
             >
               <Mail className="w-6 h-6 text-gray-600" />
@@ -64,9 +64,7 @@ export default function Pemantauan() {
             </button>
 
             <div className="flex items-center gap-2 pl-4 border-l border-gray-200">
-              <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-white font-bold">
-                U
-              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-icon lucide-circle-user"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
               <div className="hidden sm:block">
                 <p className="text-sm font-medium text-gray-900">Admin</p>
                 <p className="text-xs text-gray-500">Admin account</p>
