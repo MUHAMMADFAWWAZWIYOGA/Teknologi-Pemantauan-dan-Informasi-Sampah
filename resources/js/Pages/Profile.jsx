@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Link } from "@inertiajs/react"
+import { Head, Link } from "@inertiajs/react"
 import { Mail, Bell, ChevronLeft, ChevronRight, LayoutDashboard, BarChart3, Eye, User } from "lucide-react"
 
 const navItems = [
@@ -54,6 +54,9 @@ export default function Profile({ user: propUser = null }) {
   }
 
   return (
+    <>
+          <Head title="Profile" />
+
     <div className="flex h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div
         className={`${sidebarOpen ? "w-64" : "w-20"} bg-white border-r border-slate-200 flex flex-col shadow-lg transition-all duration-300`}
@@ -244,5 +247,6 @@ export default function Profile({ user: propUser = null }) {
         </div>
       </div>
     </div>
+    </>
   )
 }

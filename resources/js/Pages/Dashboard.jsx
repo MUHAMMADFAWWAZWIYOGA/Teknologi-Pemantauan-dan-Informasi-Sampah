@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Link } from "@inertiajs/react"
+import { Link, Head } from "@inertiajs/react";
 import { ChevronRight, ChevronLeft, Mail, Bell, LayoutDashboard, BarChart3, Eye, User } from "lucide-react"
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 
@@ -56,6 +56,8 @@ export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
 
   return (
+    <>
+      <Head title="Dashboard" />
     <div className="flex h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div
         className={`${sidebarOpen ? "w-64" : "w-20"} bg-white border-r border-slate-200 flex flex-col shadow-lg transition-all duration-300`}
@@ -338,5 +340,6 @@ export default function Dashboard() {
         </div>
       </div>
     </div>
+    </>
   )
 }

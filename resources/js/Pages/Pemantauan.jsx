@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ChevronRight, ChevronLeft, Mail, Bell, LayoutDashboard, BarChart3, Eye, User, } from "lucide-react";
-import { Link } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 
 const cameras = [
   { id: 1, name: "KAMERA 1", location: "Area Pasar Baru" },
@@ -22,6 +22,8 @@ export default function Pemantauan() {
   const [notifCount] = useState(3);
 
   return (
+    <>
+      <Head title="Pemantauan" />
     <div className="flex h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div
         className={`${sidebarOpen ? "w-64" : "w-20"} bg-white border-r border-slate-200 flex flex-col shadow-lg transition-all duration-300`}
@@ -179,5 +181,6 @@ export default function Pemantauan() {
         </main>
       </div>
     </div>
+    </>
   );
 }
