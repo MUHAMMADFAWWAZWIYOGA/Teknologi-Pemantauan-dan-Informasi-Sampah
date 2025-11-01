@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react"
-import { Head, Link } from "@inertiajs/react"
+import { Head, Link, router } from "@inertiajs/react"
 import { Bell, ChevronLeft, ChevronRight, LayoutDashboard, BarChart3, Eye, User, FileText, Activity, Clock, X, Edit, LogOut, Phone, AtSign, Shield, Camera } from "lucide-react"
 
 const navItems = [
@@ -511,7 +511,8 @@ export default function Profile({ user: propUser = null }) {
                   <button
                     type="button"
                     onClick={() => {
-                      alert('Logout functionality - integrate with your backend')
+                      setShowLogoutConfirm(false)
+                      router.post(route('logout'))
                     }}
                     className="flex-1 px-4 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-xl hover:from-red-700 hover:to-red-800 transition-all shadow-lg hover:scale-105"
                   >
