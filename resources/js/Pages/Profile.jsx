@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Head, Link } from "@inertiajs/react"
+import { Link } from "@inertiajs/react"
 import { Mail, Bell, ChevronLeft, ChevronRight, LayoutDashboard, BarChart3, Eye, User } from "lucide-react"
 
 const navItems = [
@@ -11,7 +11,6 @@ const navItems = [
   { id: "profile", label: "Profile", icon: User, href: "/profile" },
 ]
 
-// Data pengguna default
 const defaultUser = {
   name: "KING ZHUKUR #92132",
   fullName: "IRFAN TRIANDA PUTRA",
@@ -54,9 +53,6 @@ export default function Profile({ user: propUser = null }) {
   }
 
   return (
-    <>
-          <Head title="Profile" />
-
     <div className="flex h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div
         className={`${sidebarOpen ? "w-64" : "w-20"} bg-white border-r border-slate-200 flex flex-col shadow-lg transition-all duration-300`}
@@ -90,7 +86,6 @@ export default function Profile({ user: propUser = null }) {
                 }`}
               onClick={() => setActiveMenu(item.id)}
             >
-
               <item.icon className="w-5 h-5" />
               {sidebarOpen && <span className="text-xl font-semibold">{item.label}</span>}
             </Link>
@@ -137,7 +132,7 @@ export default function Profile({ user: propUser = null }) {
             <div className="flex items-center gap-3 pl-4 border-l border-slate-200">
               <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
                   <span className="text-white font-semibold text-sm">A</span>
-                </div>
+                </div> 
               <div>
                 <p className="text-sm font-semibold text-slate-900">Admin</p>
                 <p className="text-xs text-slate-500">Admin account</p>
@@ -247,6 +242,5 @@ export default function Profile({ user: propUser = null }) {
         </div>
       </div>
     </div>
-    </>
   )
 }
