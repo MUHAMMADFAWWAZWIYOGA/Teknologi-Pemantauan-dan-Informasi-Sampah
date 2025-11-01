@@ -2,12 +2,13 @@
 
 import { useState } from "react"
 import { Head, Link, router } from "@inertiajs/react"
-import { Mail, Bell, ChevronLeft, ChevronRight, LayoutDashboard, BarChart3, Eye, User } from "lucide-react"
+import { Mail, Bell, ChevronLeft, ChevronRight, LayoutDashboard, BarChart3, Eye, User,FileText } from "lucide-react"
 
 const navItems = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
   { id: "laporan", label: "Laporan", icon: BarChart3, href: "/laporan" },
   { id: "pemantauan", label: "Pemantauan", icon: Eye, href: "/pemantauan" },
+  { id: "konten", label: "Konten", icon: FileText, href: "/konten" },
   { id: "profile", label: "Profile", icon: User, href: "/profile" },
 ]
 

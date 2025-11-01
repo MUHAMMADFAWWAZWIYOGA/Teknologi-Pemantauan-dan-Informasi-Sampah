@@ -9,6 +9,7 @@ import {
   Eye,
   User,
   X,
+  FileText
 } from "lucide-react";
 import { Head, Link } from "@inertiajs/react";
 
@@ -31,6 +32,7 @@ const navItems = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
   { id: "laporan", label: "Laporan", icon: BarChart3, href: "/laporan" },
   { id: "pemantauan", label: "Pemantauan", icon: Eye, href: "/pemantauan" },
+  { id: "konten", label: "Konten", icon: FileText, href: "/konten" },
   { id: "profile", label: "Profile", icon: User, href: "/profile" },
 ];
 
