@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { Head, Link } from '@inertiajs/react';
 import { ChevronRight, ChevronLeft, Mail, Bell } from "lucide-react";
@@ -57,7 +56,6 @@ export default function Laporan({ reports = null }) {
       <Head title="Laporan" />
 
       <div className="flex h-screen bg-gray-50">
-
         <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
           <div className="p-6 border-b border-gray-200">
             <div className="flex items-center gap-2">

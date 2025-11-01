@@ -55,7 +55,6 @@ export default function Dashboard() {
 
   return (
     <div className="flex h-screen bg-gray-50">
-      {/* Sidebar */}
       <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
         <div className="p-6 border-b border-gray-200">
           <div className="flex items-center gap-2">
@@ -108,9 +107,7 @@ export default function Dashboard() {
         </nav>
       </div>
 
-      {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Top Bar */}
         <div className="bg-white border-b border-gray-200 px-8 py-4 flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
           <div className="flex items-center gap-4">
@@ -131,9 +128,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Content */}
         <div className="flex-1 overflow-auto p-8 space-y-8">
-          {/* Stat Cards */}
           <div className="grid grid-cols-4 gap-6">
             <div className="bg-white rounded-2xl border-2 border-blue-500 p-6 text-center">
               <p className="text-gray-500 text-sm">Active Devices</p>
@@ -153,9 +148,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Charts Section */}
           <div className="grid grid-cols-3 gap-6">
-            {/* Line Chart */}
             <div className="col-span-2 bg-white rounded-2xl p-6 shadow-sm">
               <div className="flex items-center justify-between mb-4">
                 <button className="p-2 hover:bg-gray-100 rounded-lg">
@@ -179,7 +172,6 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Device Info */}
             <div className="bg-white rounded-2xl p-6 shadow-sm">
               <div className="space-y-4">
                 {devices.map((device) => (
@@ -194,7 +186,6 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Bottom Charts */}
           <div className="grid grid-cols-3 gap-6">
             <div className="bg-white rounded-2xl p-6 shadow-sm">
               <h3 className="text-center text-gray-700 font-medium mb-4">Events</h3>

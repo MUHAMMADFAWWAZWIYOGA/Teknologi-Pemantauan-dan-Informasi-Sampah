@@ -21,7 +21,6 @@ export default function Profile({ user: propUser = null }) {
       <Head title="Profile" />
 
       <div className="flex h-screen bg-gray-50">
-        {/* Sidebar */}
         <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
           <div className="p-6 border-b border-gray-200">
             <div className="flex items-center gap-2">
@@ -82,9 +81,7 @@ export default function Profile({ user: propUser = null }) {
           </nav>
         </div>
 
-        {/* Main Content */}
         <div className="flex-1 flex flex-col">
-          {/* Top Bar */}
           <div className="bg-white border-b border-gray-200 px-8 py-4 flex justify-between items-center">
             <h1 className="text-3xl font-bold text-gray-900">PROFILE</h1>
 
@@ -110,7 +107,6 @@ export default function Profile({ user: propUser = null }) {
             </div>
           </div>
 
-          {/* Content Area */}
           <div className="flex-1 overflow-auto flex items-center justify-center p-8">
             <div className="bg-white rounded-lg shadow-lg p-12 max-w-2xl w-full">
               <div className="flex justify-center mb-8 relative">
