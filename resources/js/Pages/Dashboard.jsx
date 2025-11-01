@@ -17,7 +17,6 @@ const lineChartData = [
   { name: "hari 2", ccx1: 25, ccx2: 35, ccx3: 30 },
   { name: "hari 3", ccx1: 30, ccx2: 40, ccx3: 35 },
   { name: "hari 4", ccx1: 35, ccx2: 45, ccx3: 40 },
-  { name: "hari 5", ccx1: 40, ccx2: 50, ccx3: 45 },
 ];
 
 const eventsData = [
