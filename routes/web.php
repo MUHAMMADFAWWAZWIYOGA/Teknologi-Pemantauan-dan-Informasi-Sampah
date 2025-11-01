@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -14,14 +14,31 @@ Route::get('/', function () {
     ]);
 });
 
+// route publik untuk laporan (tanpa auth)
+Route::get('/laporan', function () {
+    return Inertia::render('Laporan');
+})->name('laporan');
+
+// route publik untuk pemantauan (tanpa auth)
+Route::get('/pemantauan', function () {
+    return Inertia::render('Pemantauan');
+})->name('pemantauan');
+
+// route dashboard (sementara tanpa auth)
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// route publik untuk profile    (tanpa auth)
+Route::get('/profile', function () {
+    return Inertia::render('Profile');
+})->name('profile');
+
+// // route profile (hanya untuk user login)
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__.'/auth.php';
