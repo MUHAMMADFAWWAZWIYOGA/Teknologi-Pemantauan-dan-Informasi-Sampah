@@ -6,13 +6,36 @@ import { ChevronRight, ChevronLeft, Mail, Bell, LayoutDashboard, BarChart3, Eye,
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 import React, { useState, useMemo, useRef, useEffect } from "react"
 
+import { useState } from "react";
+import { Link } from "@inertiajs/react";
+import {
+    ChevronRight,
+    ChevronLeft,
+    Mail,
+    Bell,
+    LayoutDashboard,
+    BarChart3,
+    Eye,
+    User,
+} from "lucide-react";
+import {
+    LineChart,
+    Line,
+    BarChart,
+    Bar,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    ResponsiveContainer,
+} from "recharts";
 
 const lineChartData = [
-  { name: "hari 1", ccx1: 20, ccx2: 30, ccx3: 25 },
-  { name: "hari 2", ccx1: 25, ccx2: 35, ccx3: 30 },
-  { name: "hari 3", ccx1: 30, ccx2: 40, ccx3: 35 },
-  { name: "hari 4", ccx1: 35, ccx2: 45, ccx3: 40 },
-]
+    { name: "hari 1", ccx1: 20, ccx2: 30, ccx3: 25 },
+    { name: "hari 2", ccx1: 25, ccx2: 35, ccx3: 30 },
+    { name: "hari 3", ccx1: 30, ccx2: 40, ccx3: 35 },
+    { name: "hari 4", ccx1: 35, ccx2: 45, ccx3: 40 },
+];
 
 const notifications = [
   { id: 1, message: " Kamera 2 mendeteksi gerakan mencurigakan", time: "5 menit lalu" },
@@ -23,35 +46,35 @@ const notifications = [
 ];
 
 const eventsData = [
-  { name: "2025-10-12", events: 4 },
-  { name: "2025-10-13", events: 6 },
-  { name: "2025-10-14", events: 8 },
-  { name: "2025-10-15", events: 10 },
-  { name: "2025-10-16", events: 11 },
-]
+    { name: "2025-10-12", events: 4 },
+    { name: "2025-10-13", events: 6 },
+    { name: "2025-10-14", events: 8 },
+    { name: "2025-10-15", events: 10 },
+    { name: "2025-10-16", events: 11 },
+];
 
 const uptimeData = [
-  { name: "D1", uptime: 40 },
-  { name: "D2", uptime: 65 },
-  { name: "D3", uptime: 75 },
-  { name: "D4", uptime: 90 },
-  { name: "D5", uptime: 95 },
-]
+    { name: "D1", uptime: 40 },
+    { name: "D2", uptime: 65 },
+    { name: "D3", uptime: 75 },
+    { name: "D4", uptime: 90 },
+    { name: "D5", uptime: 95 },
+];
 
 const falsePositiveData = [
-  { name: "D1", count: 3 },
-  { name: "D2", count: 5 },
-  { name: "D3", count: 12 },
-  { name: "D4", count: 3 },
-  { name: "D5", count: 9 },
-]
+    { name: "D1", count: 3 },
+    { name: "D2", count: 5 },
+    { name: "D3", count: 12 },
+    { name: "D4", count: 3 },
+    { name: "D5", count: 9 },
+];
 
 const devices = [
-  { id: "D1", time: "1h ago", confidence: 0.7, status: "active" },
-  { id: "D2", time: "4h ago", confidence: 0.65, status: "active" },
-  { id: "D3", time: "2h ago", confidence: 0.5, status: "idle" },
-  { id: "D4", time: "5h ago", confidence: 0.85, status: "active" },
-]
+    { id: "D1", time: "1h ago", confidence: 0.7, status: "active" },
+    { id: "D2", time: "4h ago", confidence: 0.65, status: "active" },
+    { id: "D3", time: "2h ago", confidence: 0.5, status: "idle" },
+    { id: "D4", time: "5h ago", confidence: 0.85, status: "active" },
+];
 
 const navItems = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
