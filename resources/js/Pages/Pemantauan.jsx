@@ -11,12 +11,10 @@ const cameras = [
 ];
 
 export default function Pemantauan() {
-  // contoh state notifikasi (buat badge dinamis)
   const [notifCount] = useState(3);
 
   return (
     <div className="flex min-h-screen bg-gray-50">
-      {/* Sidebar */}
       <aside className="w-64 bg-white border-r border-gray-200 flex flex-col">
         <div className="p-6 border-b border-gray-200">
           <div className="flex items-center gap-2">
@@ -37,9 +35,7 @@ export default function Pemantauan() {
         </nav>
       </aside>
 
-      {/* Main Content */}
       <main className="flex-1 flex flex-col">
-        {/* Top Bar */}
         <div className="bg-white border-b border-gray-200 px-8 py-4 flex justify-between items-center">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">DAFTAR PEMANTAUAN KAMERA</h1>
@@ -63,7 +59,6 @@ export default function Pemantauan() {
               <Bell className="w-6 h-6 text-gray-600" />
               {notifCount > 0 && (
                 <span className="absolute top-1 right-1 w-3 h-3 bg-red-500 rounded-full flex items-center justify-center text-white text-[10px]">
-                  {/* small dot; if you want number, replace with notifCount */}
                 </span>
               )}
             </button>
@@ -80,16 +75,13 @@ export default function Pemantauan() {
           </div>
         </div>
 
-        {/* Content area */}
         <div className="flex-1 p-10 overflow-auto">
-          {/* Kamera Grid */}
           <div className="grid md:grid-cols-2 gap-8">
             {cameras.map((cam) => (
               <article
                 key={cam.id}
                 className="relative bg-white rounded-2xl shadow-md overflow-hidden"
               >
-                {/* placeholder image (ganti src sesuai asset project) */}
                 <img
                   src="/cctv-sample.jpg"
                   alt={cam.name}
