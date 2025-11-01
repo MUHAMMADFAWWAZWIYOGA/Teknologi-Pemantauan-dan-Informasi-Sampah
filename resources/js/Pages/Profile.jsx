@@ -60,7 +60,7 @@ export default function Profile({ user: propUser = null }) {
         <div className="p-6 border-b border-slate-100 flex items-center justify-between">
           <div className={`flex items-center gap-3 ${!sidebarOpen && "justify-center w-full"}`}>
             <img
-              src="/assets/logo_tapis.png"
+              src="/assets/person2_placeholder.png"
               alt="Logo Hijau.ID"
               className="w-20 h-20 object-contain"
             />
