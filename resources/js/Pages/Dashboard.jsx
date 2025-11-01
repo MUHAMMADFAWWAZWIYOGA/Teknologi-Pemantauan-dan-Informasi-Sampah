@@ -100,48 +100,58 @@ export default function Dashboard() {
 
   return (
     <>
-      <Head title="Dashboard" />
+      <Head>
+        <title>Dashboard | TAPIS.id</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%233b82f6'/><stop offset='50%25' stop-color='%239333ea'/><stop offset='100%25' stop-color='%231d4ed8'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><text x='50' y='72' font-size='65' font-weight='bold' text-anchor='middle' fill='white' font-family='system-ui'>T</text></svg>" />
+      </Head>
       <div className="flex h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
         <div
-          className={`${sidebarOpen ? "w-64" : "w-20"} bg-white/80 backdrop-blur-lg border-r border-slate-200/50 flex flex-col shadow-xl transition-all duration-300`}
+          className={`${sidebarOpen ? "w-64" : "w-20"} bg-white/80 backdrop-blur-lg border-r border-slate-200/50 flex flex-col shadow-xl transition-all duration-500 ease-in-out will-change-[width]`}
         >
-          <div className="p-6 border-b border-slate-100 flex items-center justify-between">
-            <div className={`flex items-center gap-3 ${!sidebarOpen && "justify-center w-full"}`}>
-              <div className="relative">
+          <div className="p-6 border-b border-slate-100 flex items-center justify-between overflow-hidden">
+            <div className={`flex items-center ${sidebarOpen ? "gap-3" : "gap-0 justify-center w-full"} transition-all duration-500 ease-in-out`}>
+              <div className="relative flex-shrink-0">
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
                   <span className="text-white font-bold text-xl">T</span>
                 </div>
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
               </div>
-              {sidebarOpen && (
-                <span className="font-bold text-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 bg-clip-text text-transparent">
-                  Tapis.id
-                </span>
-              )}
+              <span className={`font-bold text-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 bg-clip-text text-transparent whitespace-nowrap overflow-hidden transition-all duration-500 ease-in-out ${
+                sidebarOpen ? "opacity-100 max-w-[200px] ml-0" : "opacity-0 max-w-0 ml-0"
+              }`}>
+                TAPIS.id
+              </span>
             </div>
-            {sidebarOpen && (
-              <button onClick={() => setSidebarOpen(false)} className="p-1 hover:bg-slate-100 rounded-lg transition-all hover:scale-110">
-                <ChevronLeft className="w-5 h-5 text-slate-400" />
-              </button>
-            )}
+            <button 
+              onClick={() => setSidebarOpen(false)} 
+              className={`p-1 hover:bg-slate-100 rounded-lg transition-all duration-300 hover:scale-110 flex-shrink-0 ${
+                sidebarOpen ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4 pointer-events-none"
+              }`}
+            >
+              <ChevronLeft className="w-5 h-5 text-slate-400" />
+            </button>
           </div>
 
-          <nav className="flex-1 px-4 py-6 space-y-2">
+          <nav className="flex-1 px-4 py-6 space-y-2 overflow-hidden">
             {navItems.map((item) => (
               <Link
                 key={item.id}
                 href={item.href}
                 preserveState
                 preserveScroll
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${
+                className={`flex items-center ${sidebarOpen ? "gap-3" : "gap-0 justify-center"} px-4 py-3 rounded-xl transition-all duration-300 ease-in-out group ${
                   activeMenu === item.id 
                     ? "text-blue-600 bg-gradient-to-r from-blue-50 to-purple-50 shadow-md scale-105" 
                     : "text-slate-600 hover:bg-gradient-to-r hover:from-slate-50 hover:to-blue-50 hover:scale-105"
                 }`}
                 onClick={() => setActiveMenu(item.id)}
               >
-                <item.icon className={`w-5 h-5 transition-transform group-hover:scale-110 ${activeMenu === item.id ? "animate-pulse" : ""}`} />
-                {sidebarOpen && <span className="text-base font-semibold">{item.label}</span>}
+                <item.icon className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 group-hover:scale-110 ${activeMenu === item.id ? "animate-pulse" : ""}`} />
+                <span className={`text-base font-semibold whitespace-nowrap overflow-hidden transition-all duration-500 ease-in-out ${
+                  sidebarOpen ? "opacity-100 max-w-full ml-0" : "opacity-0 max-w-0 ml-0"
+                }`}>
+                  {item.label}
+                </span>
               </Link>
             ))}
           </nav>
