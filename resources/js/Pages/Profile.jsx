@@ -17,7 +17,7 @@ const defaultUser = {
   phone: "0813-7838-3969",
   email: "irfantrianda1213@gmail.com",
   role: "ADMIN",
-  avatar: "https://via.placeholder.com/200/5B7CFA/FFFFFF?text=Profile",
+  avatar: "/assets/person2_placeholder.jpg",
 }
 
 export default function Profile({ user: propUser = null }) {
