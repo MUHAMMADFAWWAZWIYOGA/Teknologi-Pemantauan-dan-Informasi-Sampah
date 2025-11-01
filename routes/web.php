@@ -6,13 +6,8 @@ use Inertia\Inertia;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+    return view('home');
+})->middleware('auth');
 
 Route::get('/laporan', function () {
     return Inertia::render('Laporan');
