@@ -2,6 +2,16 @@
   <img src="https://user-images.githubusercontent.com/64391696/231175658-0062400e-66a8-4c91-9c6a-4d436a08f51a.gif" alt="Animated Divider">
 </p>
 
+████████╗ █████╗ ██████╗ ██╗███████╗
+╚══██╔══╝██╔══██╗██╔══██╗██║██╔════╝
+   ██║   ███████║██████╔╝██║███████╗  
+   ██║   ██╔══██║██╔═    ██║     ██║
+   ██║   ██║  ██║██║     ██║███████║
+   ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
+  T A P I S — Teknologi Pemantauan
+     dan Informasi Sampah (TAPIS)
+
+
 <h1 align="center">
   <img src="https://raw.githubusercontent.com/MUHAMMADFAWWAZWIYOGA/Teknologi-Pemantauan-dan-Informasi-Sampah/main/docs/tapis_logo_final.png" alt="TAPIS Logo" width="300px">
   <br>
