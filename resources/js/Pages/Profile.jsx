@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Link } from "@inertiajs/react"
+import { Head, Link } from "@inertiajs/react"
 import { Mail, Bell, ChevronLeft, ChevronRight, LayoutDashboard, BarChart3, Eye, User } from "lucide-react"
 
 const navItems = [
@@ -53,6 +53,8 @@ export default function Profile({ user: propUser = null }) {
   }
 
   return (
+    <>
+      <Head title="Profile" />
     <div className="flex h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div
         className={`${sidebarOpen ? "w-64" : "w-20"} bg-white border-r border-slate-200 flex flex-col shadow-lg transition-all duration-300`}
@@ -60,7 +62,7 @@ export default function Profile({ user: propUser = null }) {
         <div className="p-6 border-b border-slate-100 flex items-center justify-between">
           <div className={`flex items-center gap-3 ${!sidebarOpen && "justify-center w-full"}`}>
             <img
-              src="/assets/person2_placeholder.png"
+              src="/assets/logo_tapis.png"
               alt="Logo Hijau.ID"
               className="w-20 h-20 object-contain"
             />
@@ -242,5 +244,6 @@ export default function Profile({ user: propUser = null }) {
         </div>
       </div>
     </div>
+    </>
   )
 }
