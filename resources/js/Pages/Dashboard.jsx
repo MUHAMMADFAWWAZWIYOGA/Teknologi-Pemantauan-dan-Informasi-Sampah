@@ -1,4 +1,4 @@
-import { ChevronRight, ChevronLeft, Mail, Bell, LayoutDashboard, BarChart3, Eye, FileText, User, X, TrendingUp, Activity, Zap, Clock } from "lucide-react"
+import { ChevronRight, ChevronLeft, Bell, LayoutDashboard, BarChart3, Eye, FileText, User, X, TrendingUp, Activity, Zap, Clock } from "lucide-react"
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from "recharts"
 import React, { useState, useMemo, useRef, useEffect } from "react"
 
@@ -152,8 +152,7 @@ export default function Dashboard() {
             </div>
 
             <div className="flex-1 flex flex-col overflow-hidden">
-                {/* Z-INDEX FIX DITERAPKAN DI SINI (relative z-10) */}
-                <div className="bg-white/80 backdrop-blur-lg border-b border-slate-200/50 px-8 py-4 flex justify-between items-center shadow-sm relative z-10">
+                <div className="bg-white/80 backdrop-blur-lg border-b border-slate-200/50 px-8 py-4 flex justify-between items-center shadow-sm relative z-30">
                     <div className="flex items-center gap-4">
                         {!sidebarOpen && (
                             <button
@@ -174,10 +173,6 @@ export default function Dashboard() {
                         </div>
                     </div>
                     <div className="flex items-center gap-4">
-                        <button className="p-2.5 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 rounded-xl transition-all hover:scale-110 relative group">
-                            <Mail className="w-5 h-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
-                            <span className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full"></span>
-                        </button>
                         <div className="relative" ref={notifRef}>
                             <button
                                 onClick={() => setShowNotif(!showNotif)}
@@ -188,7 +183,7 @@ export default function Dashboard() {
                             </button>
 
                             {showNotif && (
-                                <div className="absolute right-0 mt-2 w-80 bg-white/95 backdrop-blur-lg shadow-2xl rounded-2xl border border-slate-200/50 z-50"> 
+                                <div className="fixed right-8 top-20 w-80 bg-white/95 backdrop-blur-lg shadow-2xl rounded-2xl border border-slate-200/50 z-[9999]"> 
                                     <div className="px-4 py-3 border-b border-slate-100 font-semibold text-slate-700 bg-gradient-to-r from-blue-50 to-purple-50 rounded-t-2xl">
                                         Notifikasi Terbaru
                                     </div>
@@ -302,10 +297,10 @@ export default function Dashboard() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {[
-                            { label: "Active Devices", value: "10", icon: Activity, color: "from-blue-500 to-blue-600", trend: "+12%", bg: "from-blue-50 to-blue-100" },
-                            { label: "Events (24h)", value: "30", icon: TrendingUp, color: "from-emerald-500 to-emerald-600", trend: "+8%", bg: "from-emerald-50 to-emerald-100" },
-                            { label: "Alerts Today", value: "7", icon: Zap, color: "from-orange-500 to-orange-600", trend: "-3%", bg: "from-orange-50 to-orange-100" },
-                            { label: "Offline Devices", value: "5", icon: X, color: "from-red-500 to-red-600", trend: "+2", bg: "from-red-50 to-red-100" },
+                            { label: "Perangkat Aktif", value: "10", icon: Activity, color: "from-blue-500 to-blue-600", trend: "+12%", bg: "from-blue-50 to-blue-100" },
+                            { label: "Peristiwa (24j)", value: "30", icon: TrendingUp, color: "from-emerald-500 to-emerald-600", trend: "+8%", bg: "from-emerald-50 to-emerald-100" },
+                            { label: "Peringatan Hari Ini", value: "7", icon: Zap, color: "from-orange-500 to-orange-600", trend: "-3%", bg: "from-orange-50 to-orange-100" },
+                            { label: "Perangkat Offline", value: "5", icon: X, color: "from-red-500 to-red-600", trend: "+2", bg: "from-red-50 to-red-100" },
                         ].map((stat, idx) => (
                             <div
                                 key={idx}
@@ -407,9 +402,9 @@ export default function Dashboard() {
                             </div>
                             <div className="flex gap-6 mt-6 pt-6 border-t border-slate-100">
                                 {[
-                                    { color: "bg-purple-500", label: "Channel 1", value: "35", status: "up" },
-                                    { color: "bg-blue-500", label: "Channel 2", value: "45", status: "up" },
-                                    { color: "bg-amber-500", label: "Channel 3", value: "40", status: "stable" }
+                                    { color: "bg-purple-500", label: "Saluran 1", value: "35", status: "up" },
+                                    { color: "bg-blue-500", label: "Saluran 2", value: "45", status: "up" },
+                                    { color: "bg-amber-500", label: "Saluran 3", value: "40", status: "stable" }
                                 ].map((channel, idx) => (
                                     <div key={idx} className="flex items-center gap-3 flex-1 p-3 rounded-xl bg-gradient-to-r from-slate-50 to-blue-50 hover:from-slate-100 hover:to-blue-100 transition-all cursor-pointer">
                                         <div className={`w-3 h-3 rounded-full ${channel.color} animate-pulse`}></div>
@@ -452,7 +447,7 @@ export default function Dashboard() {
                                             <span className="text-xs text-slate-500 font-medium">{device.time}</span>
                                         </div>
                                         <div className="flex items-center justify-between">
-                                            <span className="text-xs text-slate-600 font-medium">Confidence</span>
+                                            <span className="text-xs text-slate-600 font-medium">Tingkat Kepercayaan</span>
                                             <div className="flex items-center gap-2 flex-1 mx-3">
                                                 <div className="flex-1 h-2 bg-slate-200 rounded-full overflow-hidden">
                                                     <div
@@ -479,9 +474,9 @@ export default function Dashboard() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {[
-                            { title: "Events", data: eventsData, dataKey: "events", color: "#3b82f6", gradient: "from-blue-500 to-blue-600" },
-                            { title: "Device Uptime", data: uptimeData, dataKey: "uptime", color: "#10b981", gradient: "from-emerald-500 to-emerald-600" },
-                            { title: "False Positive", data: falsePositiveData, dataKey: "count", color: "#f59e0b", gradient: "from-amber-500 to-amber-600" },
+                            { title: "Peristiwa", data: eventsData, dataKey: "events", color: "#3b82f6", gradient: "from-blue-500 to-blue-600" },
+                            { title: "Waktu Aktif Perangkat", data: uptimeData, dataKey: "uptime", color: "#10b981", gradient: "from-emerald-500 to-emerald-600" },
+                            { title: "Positif Palsu", data: falsePositiveData, dataKey: "count", color: "#f59e0b", gradient: "from-amber-500 to-amber-600" },
                         ].map((chart, idx) => (
                             <div
                                 key={idx}

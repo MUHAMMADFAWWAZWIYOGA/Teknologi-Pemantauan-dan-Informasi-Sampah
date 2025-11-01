@@ -200,8 +200,7 @@ export default function Pemantauan() {
                 </button>
 
                 {showNotif && (
-                  // *** FIX APPLIED HERE: Added z-50 to ensure it overlays other header/content elements ***
-                  <div className="absolute right-0 mt-2 w-80 bg-white/95 backdrop-blur-lg shadow-2xl rounded-2xl border border-slate-200/50 z-50">
+                  <div className="fixed right-8 top-20 w-80 bg-white/95 backdrop-blur-lg shadow-2xl rounded-2xl border border-slate-200/50 z-[9999]">
                     <div className="px-4 py-3 border-b border-slate-100 font-semibold text-slate-700 bg-gradient-to-r from-blue-50 to-purple-50 rounded-t-2xl">
                       Notifikasi Terbaru
                     </div>

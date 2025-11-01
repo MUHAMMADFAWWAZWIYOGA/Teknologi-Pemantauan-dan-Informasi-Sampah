@@ -242,7 +242,7 @@ export default function Konten({ contents = [] }) {
         </div>
 
         <div className="flex-1 flex flex-col overflow-hidden">
-          <div className="bg-white/80 backdrop-blur-lg border-b border-slate-200/50 px-8 py-4 flex justify-between items-center shadow-sm">
+          <div className="bg-white/80 backdrop-blur-lg border-b border-slate-200/50 px-8 py-4 flex justify-between items-center shadow-sm relative z-30">
             <div className="flex items-center gap-4">
               {!sidebarOpen && (
                 <button
@@ -280,7 +280,15 @@ export default function Konten({ contents = [] }) {
                 </button>
 
                 {showNotif && (
-                  <div className="absolute right-0 mt-2 w-80 bg-white/95 backdrop-blur-lg shadow-2xl rounded-2xl border border-slate-200/50 z-50">
+                  <div 
+                    className="fixed w-80 bg-white/95 backdrop-blur-lg shadow-2xl rounded-2xl border border-slate-200/50" 
+                    style={{ 
+                      right: '2rem', 
+                      top: '5rem', 
+                      zIndex: 99999,
+                      position: 'fixed'
+                    }}
+                  >
                     <div className="px-4 py-3 border-b border-slate-100 font-semibold text-slate-700 bg-gradient-to-r from-blue-50 to-purple-50 rounded-t-2xl">
                       Notifikasi Terbaru
                     </div>
@@ -334,7 +342,7 @@ export default function Konten({ contents = [] }) {
           </div>
 
           {showAllNotif && (
-            <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+            <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center" style={{ zIndex: 10000 }}>
               <div className="bg-white w-11/12 md:w-3/4 lg:w-2/3 rounded-2xl shadow-2xl">
                 <div className="flex justify-between items-center border-b px-6 py-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-t-2xl">
                   <h2 className="text-lg font-semibold text-slate-800">Semua Notifikasi</h2>
@@ -374,7 +382,7 @@ export default function Konten({ contents = [] }) {
           )}
 
           {showForm && (
-            <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+            <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4" style={{ zIndex: 10000 }}>
               <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-6 w-full max-w-md shadow-2xl max-h-[90vh] overflow-y-auto">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-xl font-semibold text-slate-900">
@@ -526,7 +534,7 @@ export default function Konten({ contents = [] }) {
           )}
 
           {showDeleteModal && (
-            <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+            <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4" style={{ zIndex: 10000 }}>
               <div className="bg-white/95 backdrop-blur-lg rounded-2xl max-w-md w-full p-6 shadow-2xl">
                 <h3 className="text-xl font-semibold text-slate-900">Hapus Konten</h3>
                 <p className="text-slate-600 mt-2">
