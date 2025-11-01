@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Link, Head } from "@inertiajs/react";
-import { ChevronRight, ChevronLeft, Mail, Bell, LayoutDashboard, BarChart3, Eye, User } from "lucide-react"
+import { ChevronRight, ChevronLeft, Mail, Bell, LayoutDashboard, BarChart3, Eye, FileText, User } from "lucide-react"
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 
 
@@ -45,9 +45,10 @@ const devices = [
 ]
 
 const navItems = [
-  { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, href: "/" },
+  { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
   { id: "laporan", label: "Laporan", icon: BarChart3, href: "/laporan" },
   { id: "pemantauan", label: "Pemantauan", icon: Eye, href: "/pemantauan" },
+  { id: "konten", label: "Konten", icon: FileText, href: "/konten" },
   { id: "profile", label: "Profile", icon: User, href: "/profile" },
 ]
 

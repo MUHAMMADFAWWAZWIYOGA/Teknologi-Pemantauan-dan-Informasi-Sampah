@@ -30,6 +30,12 @@ export default function AuthenticatedLayout({ header, children }) {
                                 >
                                     Dashboard
                                 </NavLink>
+                                <NavLink
+                                    href={route('konten.index')}
+                                    active={route().current('konten.index')}
+                                >
+                                    Konten
+                                </NavLink>
                             </div>
                         </div>
 
@@ -133,6 +139,12 @@ export default function AuthenticatedLayout({ header, children }) {
                             active={route().current('dashboard')}
                         >
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            href={route('konten.index')}
+                            active={route().current('konten.index')}
+                        >
+                            Konten
                         </ResponsiveNavLink>
                     </div>
 

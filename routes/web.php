@@ -14,6 +14,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
+    // Educational Content Routes
+    Route::controller(\App\Http\Controllers\EducationalContentController::class)->group(function () {
+        Route::get('/konten', 'index')->name('konten');
+        Route::post('/konten', 'store')->name('konten.store');
+        Route::delete('/konten/{content}', 'destroy')->name('konten.destroy');
+    });
+
     Route::get('/laporan', function () {
         return Inertia::render('laporan');
     })->name('laporan');
