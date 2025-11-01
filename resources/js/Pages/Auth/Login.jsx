@@ -24,14 +24,10 @@ export default function Login({ status, canResetPassword }) {
             <Head title="Log in" />
 
             <div className="min-h-screen flex bg-white">
-                {/* LEFT SIDE - Blue Pattern Background */}
                 <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 relative overflow-hidden items-center justify-center">
-                    {/* Decorative Shapes Container */}
                     <div className="absolute inset-0">
-                        {/* Large circle bottom left */}
                         <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-blue-400 rounded-full opacity-20"></div>
 
-                        {/* Circles - Various sizes */}
                         <div className="absolute top-20 left-20 w-20 h-20 border-4 border-blue-300 rounded-full opacity-40"></div>
                         <div className="absolute top-40 left-1/3 w-12 h-12 bg-blue-400 rounded-full opacity-30"></div>
                         <div className="absolute top-1/3 right-1/4 w-16 h-16 border-3 border-blue-300 rounded-full opacity-35"></div>
@@ -39,7 +35,6 @@ export default function Login({ status, canResetPassword }) {
                         <div className="absolute bottom-20 right-1/3 w-14 h-14 bg-blue-300 rounded-full opacity-25"></div>
                         <div className="absolute bottom-40 left-1/2 w-10 h-10 border-3 border-blue-300 rounded-full opacity-40"></div>
 
-                        {/* Triangles - Pointing right */}
                         <div
                             className="absolute top-1/4 left-1/4 opacity-40"
                             style={{
