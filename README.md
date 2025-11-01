@@ -1,12 +1,6 @@
-<p align="center">
-  <a href="https://github.com/MUHAMMADFAWWAZWIYOGA/Teknologi-Pemantauan-dan-Informasi-Sampah">
-    <img src="https://raw.githubusercontent.com/MUHAMMADFAWWAZWIYOGA/Teknologi-Pemantauan-dan-Informasi-Sampah/main/public/assets/logo%20TAPIS.png" alt="TAPIS Logo - Click to Visit Repo" width="300px">
-  </a>
-</p>
-
 
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/MUHAMMADFAWWAZWIYOGA/Teknologi-Pemantauan-dan-Informasi-Sampah/main/docs/tapis_logo_final.png" alt="TAPIS Logo" width="300px">
+  
   <br>
   <p style="font-family: 'Hack', monospace; color: #00FF00; text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00;">
     <span style="font-family: 'monospace'; font-size: 0.8em; color: #00FF00;">_</span>TAPIS<span style="font-family: 'monospace'; font-size: 0.8em; color: #00FF00;">_</span>
