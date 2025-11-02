@@ -120,7 +120,7 @@ export default function Pemantauan() {
               </div>
               {sidebarOpen && (
                 <span className="font-bold text-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 bg-clip-text text-transparent">
-                  Tapis.id
+                  TAPIS.id
                 </span>
               )}
             </div>
@@ -169,7 +169,7 @@ export default function Pemantauan() {
         </div>
 
         <div className="flex-1 flex flex-col overflow-hidden">
-          <div className="bg-white/80 backdrop-blur-lg border-b border-slate-200/50 px-8 py-4 flex justify-between items-center shadow-sm relative z-10"> {/* Added relative z-10 for header context */}
+          <div className="bg-white/80 backdrop-blur-lg border-b border-slate-200/50 px-8 py-4 flex justify-between items-center shadow-sm relative z-10"> 
             <div className="flex items-center gap-4">
               {!sidebarOpen && (
                 <button
@@ -383,8 +383,6 @@ export default function Pemantauan() {
                     }`}
                   >
                     <div className="relative group">
-                      {/* NOTE: You'll need an actual image file or use a placeholder service if you want a real image, 
-                      but keeping your original placeholder for now. */}
                       <img
                         src="/cctv-sample.jpg" 
                         alt={cam.name}
@@ -457,7 +455,6 @@ export default function Pemantauan() {
           </main>
         </div>
       </div>
-      {/* Ensure the full notification modal also stays on top, which it already does with z-50 */}
     </>
   );
 }

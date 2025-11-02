@@ -88,7 +88,6 @@ export default function Konten({ contents = [] }) {
     const file = e.target.files[0];
     if (file) {
       setData('image', file);
-      // Preview image
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);

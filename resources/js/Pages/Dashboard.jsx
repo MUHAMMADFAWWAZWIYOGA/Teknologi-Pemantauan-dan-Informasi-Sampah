@@ -112,7 +112,7 @@ export default function Dashboard() {
                         </div>
                         {sidebarOpen && (
                             <span className="font-bold text-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 bg-clip-text text-transparent">
-                                Tapis.id
+                                TAPIS.id
                             </span>
                         )}
                     </div>
@@ -530,6 +530,6 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
-        </div> // Penutup untuk div className="flex h-screen..."
-    ) // Penutup untuk return()
-} // Penutup untuk function Dashboard()
+        </div>
+    )
+} 
